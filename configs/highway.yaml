@@ -1,0 +1,57 @@
+# Highway lane keeping.
+#
+# Tuned on the Udacity CarND advanced lane finding sample footage: a 1280x720
+# forward camera on a US Interstate. The perspective quad and the two pixel
+# scales below were measured, not guessed; rerun scripts/measure_scale.py after
+# any change to the camera mounting or to the source quad.
+
+calibration_path: outputs/calibration/camera.json
+
+thresholds:
+  hls_s_min: 170
+  hls_s_max: 255
+  hls_l_min: 200
+  hls_l_max: 255
+  lab_b_min: 155
+  lab_b_max: 200
+  sobel_x_min: 20
+  sobel_x_max: 100
+  sobel_kernel: 3
+
+perspective:
+  src_top_left: [0.445, 0.640]
+  src_top_right: [0.558, 0.640]
+  src_bottom_right: [0.885, 0.960]
+  src_bottom_left: [0.164, 0.960]
+  dst_margin: 0.25
+  lane_width_m: 3.7
+  dash_length_m: 3.05
+  # measured on data/raw/test_images/straight_lines1.jpg
+  lane_width_px: 546.0
+  dash_length_px: 59.5
+
+lane_fit:
+  n_windows: 9
+  window_margin: 100
+  min_pixels_to_recentre: 50
+  search_margin: 80
+  smoothing: 0.75
+  min_lane_width_m: 2.5
+  max_lane_width_m: 5.0
+  max_dropped_frames: 5
+
+controller:
+  # Gains from the CARLA ROS 2 reference lateral controller, see docs/RESEARCH.md
+  kp: 0.5
+  ki: 0.01
+  kd: 0.1
+  stanley_k: 0.5
+  stanley_softening: 1.0
+  dt: 0.05
+  steer_limit: 1.0
+  max_steer_angle: 0.5236
+  integral_limit: 1.0
+
+vehicle:
+  wheelbase_m: 2.875   # CARLA Tesla Model 3
+  max_speed_ms: 30.0
