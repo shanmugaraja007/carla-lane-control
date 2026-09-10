@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carla-lane-control"
+version = "0.1.0"
+description = "Vision based lane perception and lateral control for CARLA and ROS 2"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Shanmugaraja Pandiyan" }]
+keywords = ["autonomous-driving", "lane-detection", "carla", "ros2", "pid", "stanley"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering :: Image Recognition",
+  "Intended Audience :: Science/Research",
+]
+dependencies = [
+  "numpy>=1.24",
+  "opencv-python>=4.8",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+lanectl = "lanectl.cli:main"
+
+[project.urls]
+Repository = "https://github.com/shanmugaraja007/carla-lane-control"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]

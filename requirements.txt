@@ -1,0 +1,14 @@
+# Pinned to the versions the results in docs/RESULTS.md were produced with.
+numpy==2.4.4
+opencv-python==4.13.0.88
+scipy==1.17.1
+matplotlib==3.10.9
+PyYAML==6.0.3
+
+# Testing
+pytest==9.1.1
+
+# Not installable from PyPI, and not needed for anything in docs/RESULTS.md:
+#   rclpy, cv_bridge, carla_msgs   come from a ROS 2 Humble installation
+#   carla==0.9.15                  the CARLA client, needs a matching server
+# See docs/PIPELINE.md for the simulator setup.
